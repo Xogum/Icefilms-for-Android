@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="1">
+	    
+	    <ListView android:id="@android:id/list"
+	    		android:layout_width="match_parent"
+	    		android:layout_height="wrap_content"/>
+	    
+	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@android:id/empty"
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center">
+	    
+	    <TextView android:id="@+id/side_empty1"
+	          android:layout_width="match_parent"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/loading"
+	        	android:textSize="18sp"
+	        	android:gravity="center"/>
+	    <TextView android:id="@+id/side_empty2"
+	          android:layout_width="match_parent"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/noWeb"
+	        	android:textSize="18sp"
+	        	android:visibility="gone"
+	        	android:gravity="center"/>
+	    
+	    </LinearLayout>
+	</LinearLayout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:id="@+layout/side_adLayout"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+	
+	    <TextView
+	        android:id="@+id/side_adTitle"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/adTitle"
+	        android:textSize="10sp"
+	        android:gravity="center_horizontal"/>
+	    <com.google.ads.AdView android:id="@+id/side_adView"
+	                         android:layout_width="wrap_content"
+	                         android:layout_height="wrap_content"
+	                         android:minHeight="50sp"
+	                         ads:adUnitId="a14e33b2dc8d36c"
+	                         ads:adSize="BANNER"
+	                         ads:loadAdOnCreate="false"/>
+	
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Icefilms.info</string>
+    <string name="loading">Icefilms.info is loading...</string>
+    <string name="noWeb">Couldn\'t connect to icefilms.info</string><string name="adTitle">Advertisement</string>
+    <string name="menu_recent">Recent Videos</string>
+    <string name="menu_txt">Text Only</string>
+    <string name="menu_img">Image Only</string>
+    <string name="menu_both">Text and Image</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_favorites">Favorites</string>
+    
+</resources>
