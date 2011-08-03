@@ -64,21 +64,41 @@ import android.view.View;
 	    			index = 0;
 	    			
 	    			//String date = "Unknown Date";
-	    			String article;
+	    			String uri,imageUri,title = "";
 	    			int link = -1, h1 = -1;
+	    			//uncomment to show the raw html first
 	    			//publishProgress(new RecentVideo("http://icefilms.info",articles,"http://img109.imageshack.us/img109/4581/baccno.png"));
+	    			
 		            while((link = articles.indexOf("<a href=", index)) != -1) {
-		            	if(articles.indexOf("/ip", link) <= link+11) {
+		            	//check that the link is for a video, if so process it
+		            	if(articles.indexOf("/ip.php?", link) <= articles.indexOf(">", link)) {
 			            	h1 = articles.lastIndexOf("<h1", link);
 			            	if(h1 > index)
 			            		publishProgress( new RecentDate( articles.substring(h1+4, articles.indexOf("</h1>", h1)) ) );
-			            		//date = articles.substring(h1+4, articles.indexOf("</h1>", h1));
 			            	
 			            	//String url = "http://icefilms.info" + articles.substring( link+9, articles.indexOf("\"", link+9));
-			            	article = articles.substring( articles.lastIndexOf("<p",link) , articles.indexOf("</p",link));
-			            	publishProgress(new RecentVideo(article));
+			            	//article = articles.substring( link , articles.indexOf("</a",link)+4 );//articles.lastIndexOf("<p",link) , articles.indexOf("</p",link));
+			            	
+			        		int a = articles.indexOf("/ip.php?",link);
+			        		uri = "http://www.icefilms.info" + articles.substring( a , articles.indexOf("\"",a) );
+			        		
+			        		a = articles.indexOf("<img",link);
+			        		if(a > articles.indexOf("</a"))
+			        			a = articles.lastIndexOf("<img",link);
+			        		int a2 = articles.indexOf("src=",a)+5;
+			        		imageUri = articles.substring( a2 , articles.indexOf("\"",a2) );
+			        		
+			        		a2 = articles.indexOf("alt=",a)+5;
+			        		if(a2 > 4)
+			        			title = articles.substring( a2 , articles.indexOf("\"",a2) );
+			        		else
+			        			title = "Unknown Title";
+			        		if(title == "alt")
+			        			title = "Unknown Title";
+			            	
+			            	publishProgress(new RecentVideo(uri,title,imageUri));//article));
 		            	}
-		            	index = articles.indexOf("</p",link);
+		            	index = articles.indexOf("</a",link)+4;
 		            	
 		    			//if(str.startsWith("*")) {
 		    			//	publishProgress(new RecentDate(str.substring(1)));
