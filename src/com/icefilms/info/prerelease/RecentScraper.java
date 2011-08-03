@@ -67,17 +67,17 @@ import android.view.View;
 	    			String article;
 	    			int link = -1, h1 = -1;
 	    			//publishProgress(new RecentVideo("http://icefilms.info",articles,"http://img109.imageshack.us/img109/4581/baccno.png"));
-		            while((link = articles.indexOf("<a href=\"/ip", index)) != -1) {
-		            	
-		            	h1 = articles.lastIndexOf("<h1", link);
-		            	if(h1 > index)
-		            		publishProgress( new RecentDate( articles.substring(h1+4, articles.indexOf("</h1>", h1)) ) );
-		            		//date = articles.substring(h1+4, articles.indexOf("</h1>", h1));
-		            	
-		            	//String url = "http://icefilms.info" + articles.substring( link+9, articles.indexOf("\"", link+9));
-		            	article = articles.substring( articles.lastIndexOf("<p",link) , articles.indexOf("</p",link));
-		            	publishProgress(new RecentVideo(article));
-		            	
+		            while((link = articles.indexOf("<a href=", index)) != -1) {
+		            	if(articles.indexOf("/ip", link) <= link+11) {
+			            	h1 = articles.lastIndexOf("<h1", link);
+			            	if(h1 > index)
+			            		publishProgress( new RecentDate( articles.substring(h1+4, articles.indexOf("</h1>", h1)) ) );
+			            		//date = articles.substring(h1+4, articles.indexOf("</h1>", h1));
+			            	
+			            	//String url = "http://icefilms.info" + articles.substring( link+9, articles.indexOf("\"", link+9));
+			            	article = articles.substring( articles.lastIndexOf("<p",link) , articles.indexOf("</p",link));
+			            	publishProgress(new RecentVideo(article));
+		            	}
 		            	index = articles.indexOf("</p",link);
 		            	
 		    			//if(str.startsWith("*")) {

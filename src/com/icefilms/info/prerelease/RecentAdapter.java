@@ -1,14 +1,12 @@
 package com.icefilms.info.prerelease;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
@@ -29,8 +27,8 @@ public final class RecentAdapter extends ArrayAdapter<RecentItem> {
 			LayoutInflater inflater = mContext.getLayoutInflater();
 			rowView = inflater.inflate(item.getType(), null, true);
 		}
-		else if(item.getType() == R.layout.recent_vid)
-			((RecentVideo)rowView.getTag()).saveImage(null);
+		//else if(item.getType() == R.layout.recent_vid)
+			//((RecentVideo)rowView.getTag()).saveImage(null);
 		
 		switch(item.getType()) {
 		
@@ -43,19 +41,20 @@ public final class RecentAdapter extends ArrayAdapter<RecentItem> {
 			
 			if( mContext.isImageEnabled() ) {
 				textView.setGravity( Gravity.CENTER );
+				imgView.setImageURI(Uri.parse(((RecentVideo)item).getImageUri()));
 				imgView.setVisibility( View.VISIBLE );
-				Bitmap img = ((RecentVideo)item).getImage();
-				if(img != null && !img.isRecycled())
-					imgView.setImageBitmap(img);
-				else {
-					new ImageDownloader().execute(imgView);//(RecentVideo)item);
-			        ProgressBar spinner = new ProgressBar(mContext);
-			        spinner.setIndeterminate(true);
-		            if (spinner.getIndeterminateDrawable() instanceof AnimationDrawable) {
-		                ((AnimationDrawable) spinner.getIndeterminateDrawable()).start();
-		            }
-		            imgView.setImageDrawable(spinner.getIndeterminateDrawable());
-				}
+				//Bitmap img = ((RecentVideo)item).getImage();
+				//if(img != null && !img.isRecycled())
+					//imgView.setImageBitmap(img);
+				//else {
+					//new ImageDownloader().execute(imgView);//(RecentVideo)item);
+			        //ProgressBar spinner = new ProgressBar(mContext);
+			        //spinner.setIndeterminate(true);
+		            //if (spinner.getIndeterminateDrawable() instanceof AnimationDrawable) {
+		                //((AnimationDrawable) spinner.getIndeterminateDrawable()).start();
+		            //}
+		            //imgView.setImageDrawable(spinner.getIndeterminateDrawable());
+				//}
 			} else {
 				textView.setGravity( Gravity.LEFT );
 				imgView.setVisibility( View.GONE );
