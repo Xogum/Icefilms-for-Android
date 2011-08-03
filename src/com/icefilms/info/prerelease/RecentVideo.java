@@ -11,8 +11,8 @@ public class RecentVideo extends RecentItem {
 	{
 		super(R.layout.recent_vid);
 
-		int a = html.indexOf("<a href=")+9;
-		uri = html.substring( a , html.indexOf("\"",a) );
+		int a = html.indexOf("/ip");
+		uri = "http://www.icefilms.info" + html.substring( a , html.indexOf("\"",a) );
 		
 		a = html.indexOf("<img");
 		int a2 = html.indexOf("src=",a)+5;
