@@ -139,7 +139,10 @@ import android.view.View;
 	    		j = releases.indexOf(">",j)+1;
 	    		String title = releases.substring(j,releases.indexOf("</a>",j));
 	    		j = releases.indexOf("<a href=",index) + 8;
-	    		String link = "http://icefilms.info" + releases.substring(j, releases.indexOf(">",j));
+	    		String temp = releases.substring(j, releases.indexOf(">",j));
+	    		if(!temp.startsWith("/"))
+	    			temp = "/" + temp;
+	    		String link = "http://icefilms.info" + temp;
 	    		list.add(insertIndex,title + "!?!" + link);
 	    		
 	    		int newIndex = releases.indexOf("<li>",index)+1;
