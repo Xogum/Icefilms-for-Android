@@ -142,7 +142,7 @@ import android.view.View;
 	    		String temp = releases.substring(j, releases.indexOf(">",j));
 	    		if(!temp.startsWith("/"))
 	    			temp = "/" + temp;
-	    		String link = "http://icefilms.info" + temp;
+	    		String link = "http://www.icefilms.info" + temp;
 	    		list.add(insertIndex,title + "!?!" + link);
 	    		
 	    		int newIndex = releases.indexOf("<li>",index)+1;

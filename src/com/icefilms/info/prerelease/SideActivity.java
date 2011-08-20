@@ -112,7 +112,7 @@ public class SideActivity extends ListActivity {
     }*/
     
     private void refresh() {
-        new SideScraper(this).execute("http://icefilms.info");
+        new SideScraper(this).execute("http://www.icefilms.info");
         AdRequest mRequest = new AdRequest();
         mRequest.addTestDevice(AD_DEV_ID);
         mRequest.addKeyword("television");
