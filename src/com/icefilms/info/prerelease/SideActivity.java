@@ -114,7 +114,7 @@ public class SideActivity extends ListActivity {
     private void refresh() {
         new SideScraper(this).execute("http://www.icefilms.info");
         AdRequest mRequest = new AdRequest();
-        mRequest.addTestDevice(AD_DEV_ID);
+        //mRequest.addTestDevice(AD_DEV_ID);
         mRequest.addKeyword("television");
         AdView adView = (AdView) findViewById(R.id.side_adView);
         adView.loadAd(mRequest);
